@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Table } from './Table';
+import {MyTableForUniversity} from './Table-for-university'
 import { columns } from './column';
 import './table.css';
 
@@ -26,7 +26,7 @@ export function UniversityTable() {
 
   return (
     <div>
-      <Table columns={columns} data={data} />
+      <MyTableForUniversity columns={columns} data={data} />
     </div>
   );
 }
