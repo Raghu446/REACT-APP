@@ -1,11 +1,13 @@
 import React, {useState, useRef, useEffect, useFilter } from 'react'
 import './styles.css';
 
-function Dropdown({options, 
+function Dropdown({
+    options, 
     prompt, 
     value, 
     onChange,
-    label 
+    label,
+    id
 }) {
 
     const [open, setOpen] = useState(false);
@@ -18,13 +20,13 @@ function Dropdown({options,
     }, []);
 
     function close (e) {
-        setOpen(e && e.target === ref.current)
+        setOpen(e && e.target === ref.current);
     }
-    // function filter(options) {
-    //     return options.filter(option => 
-    //         option[label].toLowerCase().indexOf(query.toLowerCase() > -1
-    //         ));
-    // }
+    function filter(options) {
+        return options.filter(option => 
+            option[label].toLowerCase().indexOf(query.toLowerCase() > -1
+            ));
+    }
    
     function displayValue() {
         if(query.length > 0) return query;
@@ -33,6 +35,7 @@ function Dropdown({options,
        }
    
     return (
+    
         <div className='dropdown'>
          <div className='control' 
          onClick={() => setOpen((prev) => !prev)}>
@@ -52,20 +55,24 @@ function Dropdown({options,
              <div className={`arrow ${open ? "open" : null}`} />
              </div>   
         <div className={`options ${open ? "open" : null}`}>
+        
             {
                options.map(option => 
                 <div 
-                className={`option $ {value === option ? "selected" : null
-            }`} 
+                key={options[id]}
+                className={`option $ {value === option ? "selected" : null}`} 
                 onClick={() => {
                     setQuery("")
                     onChange(option);
                     setOpen(false)
-                }}>{option.university}</div>)
+                }}
+                >
+                    {option[label]}</div>)
             }
-            
+        
         </div>
         </div>
+    
     )
 }
 

@@ -1,14 +1,17 @@
-import React from 'react'
-import MockData from './MOCK_DATA (1).json'
-import {admincolumns} from './admission column'
-import MyTableForAdmission from './Table-for-Admission';
+import React, { useState } from 'react'
+import TABLEFORADMISSIONS from './TABLE-FOR-ADMISSIONS';
+
+
 function AdmissionTable() {
 
-    const data = React.useMemo(() => MockData, [])
+  
+  
 
     return (
         <div>
-          <MyTableForAdmission columns={admincolumns} data={data} />
+          <TABLEFORADMISSIONS></TABLEFORADMISSIONS>
+          
+          
         </div>
       );
    

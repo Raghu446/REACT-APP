@@ -12,7 +12,7 @@ import Dropdown from "./Dropdown";
 import Universities from './MOCK_DATA (1).json'
 
 export function MyTableForAdmission ( {columns, data} ) {
-  const [value, setValue] = useState(null)
+  const [value, setValue] = useState('null')
   const [Newdata, setNewdata] = useState(data);
 const[searchTerm, setsearchTerm] = useState('');
 const [addFormData, setAddFormData] = useState({
@@ -58,6 +58,7 @@ const handleAddFormSubmit = (event) => {
   event.preventDefault();
 
   const newAdmission = {
+    sl_no: addFormData.sl_no,
     student_name: addFormData.student_name,
     student_cutoff: addFormData.student_cutoff,
     student_address: addFormData.student_address,
@@ -65,7 +66,7 @@ const handleAddFormSubmit = (event) => {
     state: addFormData.state,
   };
   const NewAdmissions = [...Newdata,newAdmission];
-  // setnewAdmission(NewAdmissions);
+  setnewAdmission(NewAdmissions);
 };
 const handleEditFarmSubmit = (event) => {
 event.preventDefault();
@@ -79,7 +80,7 @@ const editedData = {
   state: editFormData.state
 }
 
-const newAdmissions = [...Newdata];
+const newAdmissions = Newdata;
 const index = newAdmissions.findIndex((Newdata)=> Newdata.id === editNewdataId );
 newAdmissions[index] = editedData;
 
@@ -143,9 +144,11 @@ const {
 
   return (
     <> 
-    <div style={{width: 200}}>
+    <div>
       <Dropdown options={Universities} 
       prompt='Select university....'
+      id='id'
+      label='university'
       value={value}
       onChange={val => setValue(val)}
       />
@@ -190,36 +193,10 @@ const {
             
              </Fragment>
                     )
-// <Fragment>
-//   {editnewAdmissionid === newAdmissions.id ? (
-//   <EditableRow editFormData={editFormData} 
-//   handleEditFarmChange={handleEditFarmChange}
-//   handleCancelClick={handleCancelClick}
-//   />
-//   ) : (<Readonlyrow 
-// newAdmission = {newAdmissions}
-// handleEditClick = {handleEditClick}
-// handleDeleteClick = {handleDeleteClick}
-// /> ) }
 
-//  </Fragment>
         )))}
         {page.map((row, i) => {
-          //  (
-          //   <Fragment>
-          //     {editNewdataId === Newdata.id ? (
-          //     <EditableRow editFormData={editFormData} 
-          //     handleEditFarmChange={handleEditFarmChange}
-          //     handleCancelClick={handleCancelClick}
-          //     />
-          //     ) : (<Readonlyrow 
-          //   Newdata = {Newdata}
-          //   handleEditClick = {handleEditClick}
-          //   handleDeleteClick = {handleDeleteClick}
-          //   /> ) }
-            
-          //    </Fragment>
-          //           )
+          
           prepareRow(row)
           return (
             <tr {...row.getRowProps()}>

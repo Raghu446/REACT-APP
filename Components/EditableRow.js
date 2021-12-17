@@ -1,25 +1,19 @@
 import React from 'react'
 
-const EditableRow = ({ editFormData, handleEditFarmChange, handleCancelClick }) => {
+const EditableRow = ({ 
+    editFormData, 
+    handleEditFarmChange, 
+    handleCancelClick 
+}) => {
     return (
-        <div>
+    
         <tr>
-            <td>
-                <input 
-                type='number'
-                name='sl_no'
-                required='required'
-                placeholder='enter a sl.no....'
-                value={editFormData.sl_no}
-                onChange={handleEditFarmChange}
-                ></input>
-            </td>
             <td>
             <input
       type='text'
-      name='student_name'
       required='required'
       placeholder='enter a name....'
+      name='student_name'
       value={editFormData.student_name}
       onChange={handleEditFarmChange}
       />
@@ -27,9 +21,9 @@ const EditableRow = ({ editFormData, handleEditFarmChange, handleCancelClick }) 
 <td>
     <input
       type='number'
-      name='student_cutoff'
       required='required'
       placeholder='enter a student_cutoff....'
+      name='student_cutoff'
       value={editFormData.student_cutoff}
       onChange={handleEditFarmChange}
       />
@@ -37,9 +31,9 @@ const EditableRow = ({ editFormData, handleEditFarmChange, handleCancelClick }) 
 <td>
  <input
       type='text'
-      name='student_address'
       required='required'
       placeholder='enter a student_address....'
+      name='student_address'
       value={editFormData.student_address}
       onChange={handleEditFarmChange}
       />
@@ -47,9 +41,9 @@ const EditableRow = ({ editFormData, handleEditFarmChange, handleCancelClick }) 
  <td>
     <input
       type='text'
-      name='university'
       required='required'
       placeholder='enter a university....'
+      name='university'
       value={editFormData.university}
       onChange={handleEditFarmChange}
       />
@@ -57,20 +51,22 @@ const EditableRow = ({ editFormData, handleEditFarmChange, handleCancelClick }) 
 <td> 
      <input
       type='text'
-      name='state'
       required='required'
       placeholder='enter a state....'
+      name='state'
       value={editFormData.state}
       onChange={handleEditFarmChange}
        />
             </td>
             <td>
                 <button type='submit'>Save</button>
-                <button type='button' onClick={handleCancelClick}>Cancel</button>
+                <button type='button' onClick={handleCancelClick}>
+                    Cancel
+                    </button>
             </td>
         </tr>
-</div>
-    )
-}
+
+    );
+};
 
 export default EditableRow
